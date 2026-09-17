@@ -6,6 +6,7 @@ export default {
     orders: 'Orders',
     finance: 'Finance',
     demandForecast: 'Demand Forecast',
+    restocking: 'Restocking',
     companyName: 'Catalyst Components',
     subtitle: 'Inventory Management System'
   },
@@ -126,6 +127,20 @@ export default {
       status: 'Status',
       expectedDelivery: 'Expected Delivery',
       actualDelivery: 'Actual Delivery'
+    },
+    submitted: {
+      title: 'Submitted Restocking Orders',
+      description: 'Restocking orders placed from the Restocking tab',
+      noOrders: 'No restocking orders submitted yet',
+      orderNumber: 'Order Number',
+      items: 'Items',
+      itemsCount: '{count} items',
+      budget: 'Budget',
+      totalCost: 'Total Cost',
+      leadTime: 'Delivery Lead Time',
+      days: 'days',
+      submittedDate: 'Submitted',
+      expectedDelivery: 'Expected Delivery'
     }
   },
 
@@ -185,6 +200,35 @@ export default {
       change: 'Change',
       trend: 'Trend',
       period: 'Period'
+    }
+  },
+
+  // Restocking
+  restocking: {
+    title: 'Restocking',
+    description: 'Set a budget to get demand-driven restock recommendations, then place the order',
+    budgetLabel: 'Available Budget',
+    recommendedItems: 'Recommended Items',
+    noRecommendations: 'Increase your budget to see restock recommendations',
+    increaseBudget: 'No items fit within this budget yet - try increasing it',
+    placeOrder: 'Place Order',
+    placingOrder: 'Placing Order...',
+    orderPlaced: 'Restocking order placed successfully! Check the Orders tab.',
+    orderFailed: 'Failed to place restocking order',
+    totalCost: 'Total Cost',
+    remainingBudget: 'Remaining Budget',
+    itemsRecommended: '{count} items recommended',
+    table: {
+      sku: 'SKU',
+      itemName: 'Item Name',
+      category: 'Category',
+      currentStock: 'Current Stock',
+      reorderPoint: 'Reorder Point',
+      trend: 'Trend',
+      quantity: 'Order Qty',
+      unitCost: 'Unit Cost',
+      lineTotal: 'Line Total',
+      leadTime: 'Lead Time'
     }
   },
 

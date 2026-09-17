@@ -2,6 +2,8 @@
   <div class="language-switcher">
     <button
       class="language-button"
+      :class="{ compact }"
+      :title="compact ? localeName : null"
       @click="toggleDropdown"
       @blur="handleBlur"
     >
@@ -17,7 +19,7 @@
         <path d="M10 3C10 3 7.5 5.5 7.5 10C7.5 14.5 10 17 10 17" stroke="currentColor" stroke-width="1.5"/>
         <path d="M10 3C10 3 12.5 5.5 12.5 10C12.5 14.5 10 17 10 17" stroke="currentColor" stroke-width="1.5"/>
       </svg>
-      <span class="language-label">{{ localeName }}</span>
+      <span v-if="!compact" class="language-label">{{ localeName }}</span>
       <svg
         class="chevron"
         :class="{ 'chevron-open': isDropdownOpen }"
@@ -57,6 +59,13 @@
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from '../composables/useI18n'
+
+defineProps({
+  compact: {
+    type: Boolean,
+    default: false
+  }
+})
 
 const { currentLocale, setLocale, availableLocales, localeName } = useI18n()
 
@@ -113,6 +122,11 @@ const selectLanguage = (locale) => {
   border-color: #cbd5e1;
 }
 
+.language-button.compact {
+  padding: 0.5rem;
+  justify-content: center;
+}
+
 .globe-icon {
   color: #64748b;
   flex-shrink: 0;
@@ -135,7 +149,8 @@ const selectLanguage = (locale) => {
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 0.5rem);
-  right: 0;
+  left: 0;
+  right: auto;
   min-width: 160px;
   background: white;
   border: 1px solid #e2e8f0;

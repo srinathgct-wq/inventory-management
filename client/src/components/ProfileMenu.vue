@@ -2,13 +2,15 @@
   <div class="profile-menu">
     <button
       class="profile-button"
+      :class="{ compact }"
+      :title="compact ? currentUser.name : null"
       @click="toggleDropdown"
       @blur="handleBlur"
     >
       <div class="avatar">
         {{ getInitials(currentUser.name) }}
       </div>
-      <span class="profile-name">{{ currentUser.name }}</span>
+      <span v-if="!compact" class="profile-name">{{ currentUser.name }}</span>
       <svg
         class="chevron"
         :class="{ 'chevron-open': isDropdownOpen }"
@@ -78,6 +80,13 @@ import { ref, computed } from 'vue'
 import { useAuth } from '../composables/useAuth'
 import { useI18n } from '../composables/useI18n'
 
+defineProps({
+  compact: {
+    type: Boolean,
+    default: false
+  }
+})
+
 const { currentUser, logout, getInitials } = useAuth()
 const { t } = useI18n()
 
@@ -138,6 +147,11 @@ const handleLogout = () => {
   border-color: #cbd5e1;
 }
 
+.profile-button.compact {
+  padding: 0.5rem;
+  justify-content: center;
+}
+
 .avatar {
   width: 32px;
   height: 32px;
@@ -170,7 +184,8 @@ const handleLogout = () => {
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 0.5rem);
-  right: 0;
+  left: 0;
+  right: auto;
   min-width: 280px;
   background: white;
   border: 1px solid #e2e8f0;
